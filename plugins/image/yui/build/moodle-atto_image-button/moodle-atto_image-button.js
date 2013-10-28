@@ -35,12 +35,16 @@ M.atto_image = M.atto_image || {
             if (M.atto_image.selection !== false) {
                 var dialogue;
                 if (!M.atto_image.dialogue) {
+                    // 25 Does not have the dialogue zIndex fixes.
                     dialogue = new M.core.dialogue({
                         visible: false,
                         modal: true,
                         close: true,
-                        draggable: true
+                        draggable: true,
+                        zIndex: 3001
                     });
+                    // 25 Does not have the dialogue zIndex fixes.
+                    dialogue.get('boundingBox').setStyle('zIndex', '3001');
                 } else {
                     dialogue = M.atto_image.dialogue;
                 }

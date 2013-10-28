@@ -61,8 +61,12 @@ M.atto_link = M.atto_link || {
                     visible: false,
                     modal: true,
                     close: true,
-                    draggable: true
+                    draggable: true,
+                    zIndex: 3001
                 });
+
+                // 25 Does not have the dialogue zIndex fixes.
+                dialogue.get('boundingBox').setStyle('zIndex', '3001');
             } else {
                 dialogue = M.atto_link.dialogue;
             }
