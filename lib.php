@@ -74,23 +74,28 @@ class atto_texteditor extends texteditor {
      * @param null $fpoptions
      */
     public function use_editor($elementid, array $options=null, $fpoptions=null) {
-        global $PAGE;
+        global $PAGE, $CFG;
         $PAGE->requires->yui_module('moodle-editor_atto-editor',
                                     'M.editor_atto.init',
                                     array($this->get_init_params($elementid, $options, $fpoptions)), true);
 
-        $plugins = core_component::get_plugin_list('atto');
+        require_once($CFG->libdir . '/pluginlib.php');
 
-        foreach ($plugins as $name => $fulldir) {
-            $PAGE->requires->string_for_js('pluginname', 'atto_' . $name);
-            $plugins[$name] = component_callback('atto_' . $name, 'sort_order', array($elementid));
+        $pluginman = plugin_manager::instance();
+        $plugins = $pluginman->get_subplugins_of_plugin('editor_atto');
+
+        $sortedplugins = array();
+
+        foreach ($plugins as $id => $plugin) {
+            $PAGE->requires->string_for_js('pluginname', 'atto_' . $plugin->name);
+            $sortorder = component_callback($plugin->type . '_' . $plugin->name, 'sort_order', array($elementid));
+            $sortedplugins[$sortorder] = $plugin;
         }
 
-        asort($plugins);
-        foreach ($plugins as $name => $sort) {
-            component_callback('atto_' . $name, 'init_editor', array($elementid));
+        ksort($sortedplugins);
+        foreach ($sortedplugins as $plugin) {
+            component_callback($plugin->type . '_' . $plugin->name, 'init_editor', array($elementid));
         }
-
     }
 
     /**
