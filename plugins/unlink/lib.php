@@ -33,8 +33,7 @@ function atto_unlink_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_unlink-button',
                                 'M.atto_unlink.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'link')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'link')));
 
 }
 

@@ -41,8 +41,7 @@ function atto_title_init_editor($elementid) {
                                           'p'), 'atto_title');
     $PAGE->requires->yui_module('moodle-atto_title-button',
                                 'M.atto_title.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'title')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'title')));
 
 }
 

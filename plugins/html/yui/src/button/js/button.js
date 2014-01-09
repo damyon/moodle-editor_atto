@@ -38,12 +38,14 @@ M.atto_html = M.atto_html || {
                 atto.append(textarea.get('value'));
                 textarea.hide();
                 atto.show();
+                atto.focus();
             } else {
                 M.editor_atto.disable_all_widgets(elementid);
                 M.editor_atto.enable_widget(elementid, 'html');
-                textarea.set('value', atto.getHTML());
+                M.editor_atto.text_updated(elementid);
                 atto.hide();
                 textarea.show();
+                textarea.focus();
             }
 
             M.atto_html.ishtml = !M.atto_html.ishtml;

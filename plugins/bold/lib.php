@@ -35,8 +35,7 @@ function atto_bold_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_bold-button',
                                 'M.atto_bold.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')));
 
 }
 

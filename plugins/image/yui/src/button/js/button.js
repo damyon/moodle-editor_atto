@@ -153,17 +153,25 @@ M.atto_image = M.atto_image || {
         var height = input.get('value');
         input = e.currentTarget.ancestor('.atto_form').one('#atto_image_presentation');
         var presentation = input.get('checked');
+        var alrt;
 
         e.preventDefault();
 
         if (alt === '' && !presentation) {
-            var alert = e.currentTarget.ancestor('.atto_form').one('#atto_image_altwarning');
-            alert.setStyle('display', 'block');
-            input = e.currentTarget.ancestor('.atto_form').one('#atto_image_widthentry');
+            alrt = e.currentTarget.ancestor('.atto_form').one('#atto_image_altwarning');
+            alrt.setStyle('display', 'block');
+            input = e.currentTarget.ancestor('.atto_form').one('#atto_image_altentry');
             input.setAttribute('aria-invalid', true);
             input = e.currentTarget.ancestor('.atto_form').one('#atto_image_presentation');
             input.setAttribute('aria-invalid', true);
             return;
+        } else {
+            alrt = e.currentTarget.ancestor('.atto_form').one('#atto_image_altwarning');
+            alrt.setStyle('display', 'none');
+            input = e.currentTarget.ancestor('.atto_form').one('#atto_image_altentry');
+            input.setAttribute('aria-invalid', false);
+            input = e.currentTarget.ancestor('.atto_form').one('#atto_image_presentation');
+            input.setAttribute('aria-invalid', false);
         }
 
         M.atto_image.dialogue.hide();
