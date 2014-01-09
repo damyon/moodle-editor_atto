@@ -35,8 +35,7 @@ function atto_orderedlist_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_orderedlist-button',
                                 'M.atto_orderedlist.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')));
 
 }
 

@@ -35,8 +35,7 @@ function atto_html_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_html-button',
                                 'M.atto_html.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'html')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'html')));
 
 }
 

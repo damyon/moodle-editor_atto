@@ -35,8 +35,7 @@ function atto_indent_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_indent-button',
                                 'M.atto_indent.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')));
 
 }
 

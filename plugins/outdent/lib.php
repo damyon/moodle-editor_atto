@@ -33,8 +33,7 @@ function atto_outdent_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_outdent-button',
                                 'M.atto_outdent.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')));
 
 }
 

@@ -35,8 +35,7 @@ function atto_strike_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_strike-button',
                                 'M.atto_strike.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')));
 
 }
 

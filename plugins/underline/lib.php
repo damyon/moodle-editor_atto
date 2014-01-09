@@ -35,8 +35,7 @@ function atto_underline_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_underline-button',
                                 'M.atto_underline.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')));
 
 }
 

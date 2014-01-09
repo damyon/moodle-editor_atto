@@ -17,32 +17,13 @@
 /**
  * Atto text editor integration version file.
  *
- * @package    atto_bold
+ * @package    atto_table
  * @copyright  2013 Damyon Wiese  <damyon@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Initialise this plugin
- * @param string $elementid
- */
-function atto_bold_init_editor($elementid) {
-    global $PAGE, $OUTPUT;
-
-    $icon = array('e/bold', 'editor_atto');
-
-    $PAGE->requires->yui_module('moodle-atto_bold-button',
-                                'M.atto_bold.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')));
-
-}
-
-/**
- * Return the order this plugin should be displayed in the toolbar
- * @return int the absolute position within the toolbar
- */
-function atto_bold_sort_order() {
-    return 0;
-}
+$plugin->version   = 2013111800;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires  = 2013111800;        // Requires this Moodle version.
+$plugin->component = 'atto_table';  // Full name of the plugin (used for diagnostics).

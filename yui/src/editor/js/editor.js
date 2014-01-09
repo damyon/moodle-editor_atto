@@ -47,6 +47,11 @@ M.editor_atto = M.editor_atto || {
     buttonhandlers : {},
 
     /**
+     * List of attached handlers to add inline editing controls to content.
+     */
+    textupdatedhandlers : {},
+
+    /**
      * List of YUI overlays for custom menus.
      */
     menus : {},
@@ -168,12 +173,28 @@ M.editor_atto = M.editor_atto || {
     },
 
     /**
+     * Add a content update handler to be called whenever the content is updated.
+     * This is used to add inline editing controls to the content that are cleaned on submission.
+     *
+     * @param string elementid - the id of the textarea we created this editor from.
+     * @handler function callback - The function to do the cleaning.
+     * @param object context - the context to set for the callback.
+     * @handler function handler - A function to call when the button is clicked.
+     */
+    add_text_updated_handler : function(elementid, callback) {
+        if (!(elementid in M.editor_atto.textupdatedhandlers)) {
+            M.editor_atto.textupdatedhandlers[elementid] = [];
+        }
+        M.editor_atto.textupdatedhandlers[elementid].push(callback);
+    },
+
+    /**
      * Add a button to the toolbar belonging to the editor for element with id "elementid".
      * @param string elementid - the id of the textarea we created this editor from.
      * @param string plugin - the plugin defining the button
      * @param string icon - the html used for the content of the button
      * @param string groupname - the group the button should be appended to.
-     * @handler function handler- A function to call when the button is clicked.
+     * @param array entries - List of menu entries with the string (entry.text) and the handlers (entry.handler).
      */
     add_toolbar_menu : function(elementid, plugin, icon, groupname, entries) {
         var toolbar = Y.one('#' + elementid + '_toolbar'),
@@ -376,7 +397,7 @@ M.editor_atto = M.editor_atto || {
 
         // Copy the current value back to the textarea when focus leaves us.
         atto.on('blur', function() {
-            textarea.set('value', this.get_clean_html(params.elementid));
+            this.text_updated(params.elementid);
         }, this);
 
         // Listen for Arrow left and Arrow right keys.
@@ -397,8 +418,17 @@ M.editor_atto = M.editor_atto || {
      * @param string elementid - the id of the textarea we created this editor from.
      */
     text_updated : function(elementid) {
-        var textarea = Y.one('#' + elementid);
-        textarea.set('value', this.get_clean_html(elementid));
+        var textarea = Y.one('#' + elementid),
+            cleancontent = this.get_clean_html(elementid);
+        textarea.set('value', cleancontent);
+        // Trigger handlers for this action.
+        var i = 0;
+        if (elementid in M.editor_atto.textupdatedhandlers) {
+            for (i = 0; i < M.editor_atto.textupdatedhandlers[elementid].length; i++) {
+                var callback = M.editor_atto.textupdatedhandlers[elementid][i];
+                callback(elementid);
+            }
+        }
     },
 
     /**
@@ -407,13 +437,17 @@ M.editor_atto = M.editor_atto || {
      * @return string HTML stripped of YUI ids
      */
     get_clean_html : function(elementid) {
-        var atto = Y.one('#' + elementid + 'editable');
+        var atto = Y.one('#' + elementid + 'editable').cloneNode(true);
 
         Y.each(atto.all('[id]'), function(node) {
             var id = node.get('id');
             if (id.indexOf('yui') === 0) {
                 node.removeAttribute('id');
             }
+        });
+
+        Y.each(atto.all('.atto_control'), function(node) {
+            node.remove(true);
         });
 
         return atto.getHTML();
