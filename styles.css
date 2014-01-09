@@ -106,6 +106,7 @@ div.editor_atto_toolbar div.atto_group {
     display: inline-block;
     min-width: 4em;
 }
+.atto_form textarea.fullwidth,
 .atto_form input.fullwidth {
     width: 100%;
 }
@@ -130,4 +131,50 @@ body.dir-rtl div.editor_atto_toolbar img.icon {
 
 body.dir-rtl div.editor_atto_toolbar div.atto_group {
     margin: 9px 9px 0px 0px;
+}
+
+.atto_control {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    display: none;
+    cursor: pointer;
+}
+.atto_control img {
+    background-color: white;
+}
+div.editor_atto_content:focus .atto_control,
+div.editor_atto_content:hover .atto_control {
+    display: block;
+}
+
+.yui3-controlmenu-hidden {
+    display: none;
+}
+.editor_atto_controlmenu li {
+    list-style-type: none;
+    padding: 0px;
+    margin; 0px;
+}
+.editor_atto_controlmenu ul {
+    padding: 0px;
+    margin: 0px;
+}
+.editor_atto_controlmenu .moodle-dialogue-hd,
+.editor_atto_controlmenu .moodle-dialogue-ft {
+    display: none;
+}
+
+.editor_atto_controlmenu ul li a:active,
+.editor_atto_controlmenu ul li a:hover {
+    background-color: #0088cc;
+    color: white;
+}
+.editor_atto_controlmenu ul li a {
+    color: #333;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 2px;
+    display: block;
 }

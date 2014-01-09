@@ -33,8 +33,7 @@ function atto_unorderedlist_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_unorderedlist-button',
                                 'M.atto_unorderedlist.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'list')));
 
 }
 

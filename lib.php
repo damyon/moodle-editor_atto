@@ -77,7 +77,7 @@ class atto_texteditor extends texteditor {
         global $PAGE;
         $PAGE->requires->yui_module('moodle-editor_atto-editor',
                                     'M.editor_atto.init',
-                                    array($this->get_init_params($elementid, $options, $fpoptions)), true);
+                                    array($this->get_init_params($elementid, $options, $fpoptions)));
 
         $plugins = core_component::get_plugin_list('atto');
 

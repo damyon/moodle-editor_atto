@@ -39,8 +39,7 @@ function atto_media_init_editor($elementid) {
                                     'atto_media');
     $PAGE->requires->yui_module('moodle-atto_media-button',
                                 'M.atto_media.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'file')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'file')));
 
 }
 

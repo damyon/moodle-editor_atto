@@ -3,7 +3,8 @@
   "builds": {
     "moodle-editor_atto-editor": {
       "jsfiles": [
-        "editor.js"
+        "editor.js",
+        "controlmenu.js"
       ]
     }
   }

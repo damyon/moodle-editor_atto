@@ -42,8 +42,7 @@ function atto_link_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_link-button',
                                 'M.atto_link.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'link')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'link')));
 
 }
 

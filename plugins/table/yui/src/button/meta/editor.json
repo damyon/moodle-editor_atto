@@ -1,7 +1,9 @@
 {
-  "moodle-atto_html-button": {
+  "moodle-atto_table-button": {
     "requires": [
         "node",
+        "escape",
+        "event",
         "event-valuechange"
     ]
   }

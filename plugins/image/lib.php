@@ -45,8 +45,7 @@ function atto_image_init_editor($elementid) {
                                           'height'), 'atto_image');
     $PAGE->requires->yui_module('moodle-atto_image-button',
                                 'M.atto_image.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'file')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'file')));
 
 }
 

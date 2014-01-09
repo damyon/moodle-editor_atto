@@ -35,8 +35,7 @@ function atto_clear_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_clear-button',
                                 'M.atto_clear.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'clear')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'clear')));
 
 }
 

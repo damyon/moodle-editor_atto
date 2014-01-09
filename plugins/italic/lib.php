@@ -35,8 +35,7 @@ function atto_italic_init_editor($elementid) {
 
     $PAGE->requires->yui_module('moodle-atto_italic-button',
                                 'M.atto_italic.init',
-                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')),
-                                true);
+                                array(array('elementid'=>$elementid, 'icon'=>$icon, 'group'=>'style')));
 
 }
 
